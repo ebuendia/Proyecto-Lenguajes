@@ -29,5 +29,5 @@ Push an existing repository from the command line
 git remote add origin https://github.com/zariel66/Proyecto-Lenguajes.git
 git push -u origin master
 
-// para ver los commits hechos
+// para ver los commits hechos donde n es el numero de commits a mostrar
 git rev-list -n 1 HEAD -- <file_path>
