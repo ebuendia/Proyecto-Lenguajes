@@ -36,3 +36,4 @@ git rev-list -n 1 HEAD -- <file_path>
 
 para regresar al ultimo commit si no se ha hecho push en el repositorio mas informacion en http://blog.solucionex.com/git/borrar-ultimo-commit-con-reset-y-revert-en-git
 git reset --hard HEAD~1
+probando que pasa en otro repositorio
