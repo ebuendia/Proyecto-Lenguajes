@@ -22,7 +22,7 @@ sub readInput
 	return $file;
 
 }
-sub readFile
+sub readRoutes
 {
 	my $path= $_[0];
 	open(DATA, $path) or die "Couldn't open file $path, $!";
@@ -30,6 +30,17 @@ sub readFile
 	my @lineas= <DATA>;
 	return (@lineas);
 }
-my $path=readInput();
-my @file=readFile($path);
-print $file[0]
+
+sub createRoutes
+{
+	my @file = @_;
+	my @result;
+	my $outputline;
+	my $airport,$ciudad,$pais,$kilometros,$tiempo,$aerolinea;
+	foreach my $line(@file)
+	{
+		
+	}
+}
+my @file = readRoutes("routes.dat");
+my @routes = createRoutes(@file);
