@@ -39,21 +39,26 @@ sub createRoutes
 	open (MYFILE, '>output.txt');
 	my $outputline;
 	my @airport1,my @airport2;
+	# my @fileair = readFile("airports.dat");
 	foreach my $line(@file)
 	{
 		$line=~ s/^\s+|s+$//g;
-		my @parameters= split(/\W+/,$line);
-		#@airport1=getAirportInfo($parameters[1]);
-		print MYFILE $parameters[0] . "|";
-		print MYFILE $parameters[1] . "|";
-		print MYFILE $parameters[2] . "|";
+		$line=~ s/\t+/:/g;
+		print $line;
+		# my @parameters= split(/\W+/,$line);
+		# my @parameters= split(/|/,$line);
+		#@airport1=getAirportInfo($parameters[1],@fileair);
+		#print MYFILE $parameters[0] . "|";
+		# print MYFILE $parameters[1] . "|";
+		# print MYFILE $parameters[2] . "|";
 		print MYFILE "\n";
 	}
 }
 
 sub getAirportInfo
 {
-	my $file = readFile("airports.dat");
+	my ($airportcode,  @file) = (@_);
+	
 }
-my @file = readFile("routes.dat");
+my @file = readFile("airlocations.tsv");
 my @routes = createRoutes(@file);
