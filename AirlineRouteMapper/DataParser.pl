@@ -2,7 +2,7 @@
 
 use 5.010;
 use strict;
-use warnings;
+# use warnings;
 
 sub readInput
 {
@@ -37,28 +37,39 @@ sub createRoutes
 	my @file = @_;
 	my @result;
 	open (MYFILE, '>output.txt');
-	my $outputline;
-	my @airport1,my @airport2;
-	# my @fileair = readFile("airports.dat");
+	my @tmp1,my @tmp2;
+	
+	my %airinfo = loadAirportInfo("airlocations.tsv");
 	foreach my $line(@file)
 	{
 		$line=~ s/^\s+|s+$//g;
 		$line=~ s/\t+/:/g;
-		print $line;
+		# print $line;
 		# my @parameters= split(/\W+/,$line);
-		# my @parameters= split(/|/,$line);
-		#@airport1=getAirportInfo($parameters[1],@fileair);
-		#print MYFILE $parameters[0] . "|";
-		# print MYFILE $parameters[1] . "|";
-		# print MYFILE $parameters[2] . "|";
-		print MYFILE "\n";
+		my @rparameters= split(":",$line);
+		# @tmp1= split(":",$airinfo{$rparameters[1]});
+		# @tmp2= split(":",$airinfo{$rparameters[2]});
+		# print $tmp1[0]. " " . $tmp2[0] . "\n";
+		# print $rparameters[1]. " " . $rparameters[2] . "\n";
+		# print $airinfo{$rparameters[1]} .  " " . $airinfo{$rparameters[2]} . "\n";
 	}
+	if(defined $airinfo{"GYE"})
+	{print "si esta vacio";}
 }
 
-sub getAirportInfo
+sub loadAirportInfo
 {
-	my ($airportcode,  @file) = (@_);
-	
+	my @airportfile = readFile($_[0]);
+	my %airinfo;
+	foreach my $line(@airportfile)
+	{
+		$line=~ s/^\s+|s+$//g;
+		$line=~ s/\t+/:/g;
+		my @tmp= split(":",$line);
+		# print $tmp[0]. "\n";
+		$airinfo{$tmp[0]} = $line;
+	}
+	return %airinfo;
 }
-my @file = readFile("airlocations.tsv");
+my @file = readFile("routes.dat");
 my @routes = createRoutes(@file);
