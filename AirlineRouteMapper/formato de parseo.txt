@@ -1,0 +1,1 @@
+codigo IATA aeropuerto 1: nombre de aeropuerto 1: ciudad 1:pais 1:codigo IATA aeropuerto 2: nombre de aeropuerto 2: ciudad 2:pais 2:distancia entre aeropuertos:horas de viaje
